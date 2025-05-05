@@ -13,10 +13,10 @@ install:
   - set PATH=%PATH%;%QTDIR%\bin
 
 build_script:
-  - qmake your_project.pro
+  - qmake copytool.pro
   - nmake
 
 artifacts:
-  - path: build\release\your_project.exe
-    name: your_project
+  - path: build\release\copytool.exe
+    name: copytool
     type: zip
