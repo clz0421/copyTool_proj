@@ -24,5 +24,6 @@ build_script:
 
 artifacts:
   - path: release\copytool.exe
+  - path: release\*.dll
     name: copytool
     type: zip
