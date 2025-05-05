@@ -19,7 +19,7 @@ install:
 build_script:
   - dir /s
   - call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvars64.bat"
-  - qmake copytool.pro
+  - qmake copytool.pro CONFIG+=release
   - nmake
   - C:\Qt\5.15.2\msvc2019_64\bin\windeployqt.exe release\copytool.exe
 
