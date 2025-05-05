@@ -17,6 +17,7 @@ install:
   - set OPENSSL_BIN_PATH=C:\OpenSSL-Win64\bin
 
 build_script:
+  - call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvars64.bat"
   - qmake copytool.pro
   - nmake
 
