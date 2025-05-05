@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
     const QUrl url(QStringLiteral("qrc:/main.qml"));
 
     if (!engine.load(url)) {
-        qCritical() << "QML load errors:" << engine.errors();
+        qCritical() << "QML load errors:" /*<< engine.errors()*/;
         return -1;
     }
     // QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
