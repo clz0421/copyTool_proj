@@ -17,11 +17,12 @@ install:
   - set OPENSSL_BIN_PATH=C:\OpenSSL-Win64\bin
 
 build_script:
+  - dir /s
   - call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvars64.bat"
   - qmake copytool.pro
   - nmake
 
 artifacts:
-  - path: C:\projects\copytool\build\release\copytool.exe
+  - path: .\build\release\copytool.exe
     name: copytool
     type: zip
