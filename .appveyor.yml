@@ -1,8 +1,26 @@
 version: 1.0.{build}
+
 image: Visual Studio 2019
-configuration: Release
+
 environment:
-  QTDIR: C:\Qt\5.15.2\msvc2019_64
-  PATH: C:\Qt\5.15.2\msvc2019_64\bin;%PATH%
-build:
-  verbosity: minimal
+  matrix:
+    - QTDIR: C:\Qt\5.15.2\msvc2019_64
+      PATH: C:\Qt\5.15.2\msvc2019_64\bin;%PATH%
+      QML2_IMPORT_PATH: C:\Qt\5.15.2\msvc2019_64\qml
+      QT_PLUGIN_PATH: C:\Qt\5.15.2\msvc2019_64\plugins
+      OPENSSL_BIN_PATH: C:\OpenSSL-Win64\bin
+
+install:
+  - set PATH=%PATH%;C:\Qt\5.15.2\msvc2019_64\bin
+  - set QML2_IMPORT_PATH=C:\Qt\5.15.2\msvc2019_64\qml
+  - set QT_PLUGIN_PATH=C:\Qt\5.15.2\msvc2019_64\plugins
+  - set OPENSSL_BIN_PATH=C:\OpenSSL-Win64\bin
+
+build_script:
+  - qmake copytool.pro
+  - nmake
+
+artifacts:
+  - path: build\release\copytool.exe
+    name: copytool
+    type: zip
