@@ -22,6 +22,6 @@ build_script:
   - nmake
 
 artifacts:
-  - path: build\release\copytool.exe
+  - path: C:\projects\copytool\build\release\copytool.exe
     name: copytool
     type: zip
