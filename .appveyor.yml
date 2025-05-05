@@ -22,6 +22,8 @@ build_script:
   - qmake copytool.pro CONFIG+=release
   - nmake
   - C:\Qt\5.15.2\msvc2019_64\bin\windeployqt.exe release\copytool.exe
+  - cmd: copytool.exe --input data --output result  # 启动本地编译后的程序:ml-citation{ref="3" data="citationList"}
+
 
 artifacts:
   - path: release\copytool.exe
