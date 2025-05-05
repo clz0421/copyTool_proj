@@ -9,7 +9,6 @@
 #include <QFile>
 #include <QFileInfo>
 #include <QProcess>
-#include <QDirIterator>
 #include <QCryptographicHash>
 #include <QUrl>
 #include <QCoreApplication>
