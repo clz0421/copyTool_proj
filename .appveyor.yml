@@ -21,9 +21,12 @@ build_script:
   - call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvars64.bat"
   - qmake copytool.pro
   - nmake
+  - C:\Qt\5.15.2\msvc2019_64\bin\windeployqt.exe release\copytool.exe
 
 artifacts:
   - path: release\copytool.exe
-  - path: release\*.dll
     name: copytool
+    type: zip
+  - path: release\*
+    name: copytool_dependencies
     type: zip
