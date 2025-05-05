@@ -22,16 +22,16 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty(QStringLiteral("diskManager"), diskManager);
     const QUrl url(QStringLiteral("qrc:/main.qml"));
 
-    if (!engine.load(url)) {
-        qCritical() << "QML load errors:" /*<< engine.errors()*/;
-        return -1;
-    }
-    // QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
-    //                  &app, [url](QObject *obj, const QUrl &objUrl) {
-    //     if (!obj && url == objUrl)
-    //         QCoreApplication::exit(-1);
-    // }, Qt::QueuedConnection);
-    // engine.load(url);
+    // if (!engine.load(url)) {
+    //     qCritical() << "QML load errors:" /*<< engine.errors()*/;
+    //     return -1;
+    // }
+    QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
+                     &app, [url](QObject *obj, const QUrl &objUrl) {
+        if (!obj && url == objUrl)
+            QCoreApplication::exit(-1);
+    }, Qt::QueuedConnection);
+    engine.load(url);
 
     if (engine.rootObjects().isEmpty()) {
         qWarning() << "Failed to load QML file.";
