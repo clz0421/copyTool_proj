@@ -1,0 +1,22 @@
+version: 1.0.{build}
+
+image: Visual Studio 2019
+
+environment:
+  matrix:
+    - QTDIR: C:\Qt\5.15.2\msvc2019_64
+      PATH: C:\Qt\5.15.2\msvc2019_64\bin;C:\Qt\Tools\mingw810_32\bin;%PATH%
+
+install:
+  - set PATH=%PATH%;C:\Qt\Tools\mingw810_32\bin
+  - set QTDIR=C:\Qt\5.15.2\msvc2019_64
+  - set PATH=%PATH%;%QTDIR%\bin
+
+build_script:
+  - qmake your_project.pro
+  - nmake
+
+artifacts:
+  - path: build\release\your_project.exe
+    name: your_project
+    type: zip
